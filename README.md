@@ -1,6 +1,6 @@
-# Birthday Website - Alya Ersanti 🎂
+# Birthday Website - Ersa Rahma Maulani 🎂
 
-Website landing page ulang tahun dengan tema vintage dan warna coral/merah bata yang modern dan interaktif. Menampilkan animasi undangan 3 tahap yang bisa diklik seperti membuka amplop digital.
+Website birthday interaktif untuk Ersa Rahma Maulani dengan nuansa romantis, vintage, dan personal. Project ini berisi opening invitation, hero section, countdown perjalanan hidup, scrapbook, galeri foto, video memori, wishes, dan final surprise.
 
 ---
 
@@ -17,16 +17,18 @@ Website landing page ulang tahun dengan tema vintage dan warna coral/merah bata 
 
 ## 🎨 Fitur
 
-- **Interactive Invitation Card**: 3 tahap animasi yang bisa diklik
-  - Stage 1: Seal/stempel dengan teks "i love love <3"
-  - Stage 2: Birthday card dengan tanggal lahir
-  - Stage 3: Surat pribadi untuk Alya
-- **Hero Section**: Foto utama dengan animasi menarik
-- **Birthday Info**: Menampilkan tanggal, hari, dan usia
-- **Photo Gallery**: Album kenangan dengan lightbox interaktif
-- **Wishes Section**: Koleksi doa dan harapan
-- **Animasi Modern**: Menggunakan Framer Motion untuk transisi smooth
-- **Responsive Design**: Tampil sempurna di desktop dan mobile
+- **Interactive Invitation Card**: 3 tahap pembuka yang bisa diklik
+  - Stage 1: Cover card dengan heart buttons
+  - Stage 2: Birthday card untuk Ersa
+  - Stage 3: Surat pribadi yang bisa dilanjutkan ke halaman utama
+- **Hero Section**: Foto utama, moving background text, dan dekorasi love/spark
+- **Birthday Journey Section**: Timeline dari 12 March 2005 sampai 12 March 2026
+- **Scrapbook Letter**: Letter layout dan photo strip memori
+- **Photo Gallery**: Album kenangan dengan beberapa foto
+- **Memory Video Section**: Slot video memori yang membaca file dari folder public
+- **Wishes Section**: Kumpulan doa dan harapan
+- **Background Music**: Musik yang bisa diputar langsung dari website
+- **Responsive Design**: Sudah disesuaikan untuk desktop dan mobile
 
 ## 🚀 Instalasi & Menjalankan
 
@@ -50,12 +52,19 @@ npm run build
 npm preview
 ```
 
-## 📸 Menambahkan Foto
+## 📸 Menambahkan Foto dan Video
 
-Tambahkan foto-foto Anda ke folder `public/images/` dengan nama-nama berikut:
+Tambahkan asset Anda ke folder berikut:
 
-- `main-photo.jpg` - Foto utama untuk Hero section
-- `memory-1.jpg` sampai `memory-6.jpg` - Foto untuk gallery (bisa ditambah lebih banyak)
+- `public/images/` untuk foto
+- `public/videos/` untuk video
+
+File yang umum dipakai di project ini:
+
+- `public/images/main-photo.svg` atau ganti ke foto utama Anda
+- `public/images/memory-1.svg` sampai `public/images/memory-6.svg` untuk scrapbook/gallery
+- `public/images/love.png` dan `public/images/spark.png` untuk dekorasi hero
+- `public/videos/memory-video.mp4` untuk section video memori
 
 **Format yang disarankan**:
 - Format: JPG, PNG, atau WebP
@@ -70,42 +79,48 @@ Edit file `src/components/InvitationCard.jsx`:
 
 **Mengubah tanggal di Birthday Card:**
 ```jsx
-<p className="card-date">20. 2. 2003</p>
-<p className="card-date-text">TWENTIETH OF FEBRUARY, TWO THOUSAND THREE</p>
+<p className="card-date">12. 3. 2005</p>
+<p className="card-date-text">TWELFTH OF MARCH, TWO THOUSAND FIVE</p>
 ```
 
 **Mengubah isi surat:**
 ```jsx
-<h2 className="letter-greeting">Dear Alya,</h2>
+<h2 className="letter-greeting">Dear Ersa,</h2>
 // Edit teks surat di bagian letter-body
 ```
 
 **Mengubah nama pengirim:**
 ```jsx
-<p className="signature-name">Louis</p>
+<p className="signature-name">sellyyyyy</p>
 ```
 
-### Mengubah Data Birthday
-
-Edit file `src/components/BirthdayInfo.jsx`:
-
-```jsx
-const birthdayData = {
-  date: '15 Maret 2026',     // Ubah tanggal
-  day: 'Minggu',              // Ubah hari
-  age: '21',                  // Ubah usia
-  place: 'Jakarta, Indonesia' // Ubah tempat
-}
-```
-
-### Mengubah Nama
+### Mengubah Hero Section
 
 Edit file `src/components/Hero.jsx`:
 
 ```jsx
-<h2 className="hero-name">
-  Alya Ersanti  {/* Ubah nama di sini */}
-</h2>
+<motion.h1 className="hero-title">
+  Ersa's 21st day
+</motion.h1>
+
+<motion.p className="hero-subtitle">
+  Wishing you a day filled with love, joy, and beautiful memories
+</motion.p>
+```
+
+### Mengubah Birthday Journey
+
+Edit file `src/components/BirthdayInfo.jsx`:
+
+```jsx
+// Section "Hari Istimewa" memakai CountdownFuture di dalamnya
+```
+
+Edit file `src/components/CountdownFuture.jsx` untuk mengubah angka/timeline:
+
+```jsx
+const startDate = new Date('2005-03-12T00:00:00')
+const milestoneDate = new Date('2026-03-12T00:00:00')
 ```
 
 ### Menambah/Mengubah Foto Gallery
@@ -116,13 +131,23 @@ Edit file `src/components/PhotoGallery.jsx`:
 const photos = [
   {
     id: 1,
-    src: '/images/memory-1.jpg',  // Path foto
+    src: '/images/memory-1.svg',  // Path foto
     caption: 'Kenangan Indah',     // Caption foto
     category: 'Friends'            // Kategori
   },
   // Tambah foto lainnya...
 ]
 ```
+
+### Menambahkan Video Memori
+
+Taruh file video di:
+
+```bash
+public/videos/memory-video.mp4
+```
+
+Section video akan otomatis mencoba menampilkan file itu dari `src/components/PlaylistPage.jsx`.
 
 ### Mengubah Doa/Wishes
 
@@ -155,15 +180,18 @@ Edit file `src/index.css` pada bagian `:root`:
 ```
 birtdayersa/
 ├── public/
-│   ├── images/          # Folder untuk semua foto
-│   │   ├── main-photo.jpg
-│   │   ├── memory-1.jpg
-│   │   └── ...
+│   ├── audio/           # Folder backsound
+│   ├── images/          # Folder foto dan dekorasi
+│   ├── videos/          # Folder video memori
 │   └── vite.svg
 ├── src/
 │   ├── components/      # Semua komponen
 │   │   ├── Hero.jsx
 │   │   ├── BirthdayInfo.jsx
+│   │   ├── CountdownFuture.jsx
+│   │   ├── InvitationCard.jsx
+│   │   ├── PlaylistPage.jsx
+│   │   ├── ScrapbookLetter.jsx
 │   │   ├── PhotoGallery.jsx
 │   │   ├── Wishes.jsx
 │   │   └── Footer.jsx
@@ -197,8 +225,8 @@ Website ini bisa di-deploy ke:
 
 ## 🎉 Selamat!
 
-Website birthday interaktif Anda sudah siap! Tinggal tambahkan foto-foto dan customize sesuai keinginan.
+Website birthday interaktif untuk Ersa Rahma Maulani sudah siap diedit lagi sesuai kebutuhan Anda. Tinggal ganti foto, video, teks, dan asset yang ingin dipersonalisasi.
 
 ---
 
-Made with ❤️ for Alya's Birthday
+Made with ❤️ for Ersa Rahma Maulani
