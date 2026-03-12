@@ -1,0 +1,61 @@
+.birthday-info {
+  background: linear-gradient(180deg, var(--color-light) 0%, var(--color-cream) 100%);
+  position: relative;
+}
+
+.birthday-message {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  padding: 50px 40px;
+  border-radius: 30px;
+  max-width: 800px;
+  margin: 40px auto 0;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(200, 90, 84, 0.3);
+}
+
+.birthday-message::before {
+  content: '"';
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 6rem;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.birthday-message::after {
+  content: '"';
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  font-size: 6rem;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.message-text {
+  font-size: 1.3rem;
+  color: white;
+  line-height: 1.8;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .birthday-message {
+    padding: 40px 30px;
+  }
+  
+  .message-text {
+    font-size: 1.1rem;
+  }
+  
+  .birthday-message::before,
+  .birthday-message::after {
+    font-size: 4rem;
+  }
+}

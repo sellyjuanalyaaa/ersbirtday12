@@ -1,0 +1,12 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sparkleGrad" x1="60" y1="0" x2="60" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB6C1"/>
+      <stop offset="50%" stop-color="#FFC0CB"/>
+      <stop offset="100%" stop-color="#98D8C8"/>
+    </linearGradient>
+  </defs>
+  <path d="M60 10 L65 50 L75 55 L65 60 L60 100 L55 60 L45 55 L55 50 Z" fill="url(#sparkleGrad)" opacity="0.9"/>
+  <path d="M85 25 L88 45 L95 48 L88 51 L85 71 L82 51 L75 48 L82 45 Z" fill="#FFB6C1" opacity="0.7"/>
+  <path d="M35 30 L38 48 L45 51 L38 54 L35 72 L32 54 L25 51 L32 48 Z" fill="#FFC0CB" opacity="0.7"/>
+</svg>

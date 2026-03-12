@@ -1,0 +1,198 @@
+.scrapbook-letter {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, #261921 0%, #130c11 100%);
+  overflow: hidden;
+  scroll-margin-top: 24px;
+}
+
+.scrapbook-shell {
+  display: block;
+}
+
+.scrapbook-board {
+  position: relative;
+  min-height: 720px;
+  padding: 60px 44px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.1), transparent 24%),
+    linear-gradient(145deg, #2d1d25 0%, #191118 100%);
+  border: 1px solid rgba(255, 232, 219, 0.12);
+  box-shadow: 0 28px 90px rgba(10, 4, 8, 0.52);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.scrapbook-board::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 235, 221, 0.12);
+  pointer-events: none;
+}
+
+/* Letter Card */
+.scrapbook-letter-card {
+  position: relative;
+  width: 480px;
+  min-height: 360px;
+  padding: 48px 42px 54px;
+  background: linear-gradient(180deg, #fffdfa 0%, #f7f0e5 100%);
+  color: #675247;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  text-align: center;
+  clip-path: polygon(0 0, 98% 0, 100% 3%, 100% 97%, 97% 100%, 0 100%, 0 0);
+  transform: rotate(-3deg);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.22);
+  z-index: 3;
+}
+
+.scrapbook-letter-card::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 2px dashed rgba(183, 166, 145, 0.55);
+  pointer-events: none;
+}
+
+.scrapbook-letter-card p + p {
+  margin-top: 18px;
+}
+
+.scrapbook-signoff {
+  margin-top: 26px;
+  font-style: italic;
+}
+
+.scrapbook-pin {
+  position: absolute;
+  top: 14px;
+  left: 22px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff9386, #ba3e33 70%);
+  box-shadow: 0 2px 8px rgba(186, 62, 51, 0.35);
+}
+
+.scrapbook-stamp {
+  position: absolute;
+  right: 28px;
+  bottom: 26px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px double rgba(167, 154, 140, 0.58);
+  opacity: 0.65;
+}
+
+/* Photo Strip */
+.scrapbook-photo-strip {
+  position: relative;
+  width: 260px;
+  padding: 16px;
+  background: linear-gradient(180deg, #fcecf3 0%, #f6dfe9 100%);
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.22);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  z-index: 4;
+  transform: rotate(3deg);
+}
+
+.scrapbook-photo-frame {
+  background: #fff9fb;
+  padding: 8px 8px 18px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16);
+}
+
+.scrapbook-photo-frame:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.scrapbook-photo-frame:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.scrapbook-photo-image {
+  width: 100%;
+  aspect-ratio: 1 / 1.18;
+  object-fit: cover;
+  display: block;
+  background: #eee1de;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+  .scrapbook-board {
+    padding: 50px 30px;
+    gap: 30px;
+  }
+
+  .scrapbook-letter-card {
+    width: min(100%, 450px);
+  }
+
+  .scrapbook-photo-strip {
+    width: min(100%, 240px);
+  }
+}
+
+@media (max-width: 768px) {
+  .scrapbook-board {
+    padding: 40px 24px;
+    border-radius: 28px;
+    gap: 24px;
+  }
+
+  .scrapbook-board::before {
+    inset: 14px;
+    border-radius: 20px;
+  }
+
+  .scrapbook-letter-card {
+    width: calc(100% - 20px);
+    max-width: 400px;
+    min-height: 300px;
+    padding: 36px 28px 50px;
+    font-size: 0.98rem;
+    line-height: 1.76;
+    transform: rotate(-2deg);
+  }
+
+  .scrapbook-photo-strip {
+    width: min(100%, 220px);
+    gap: 10px;
+    transform: rotate(2deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .scrapbook-board {
+    padding: 30px 16px;
+    gap: 20px;
+  }
+
+  .scrapbook-letter-card {
+    width: calc(100% - 16px);
+    padding: 28px 20px 42px;
+    font-size: 0.92rem;
+    line-height: 1.72;
+    transform: rotate(-1deg);
+  }
+
+  .scrapbook-photo-strip {
+    width: min(100%, 196px);
+    gap: 8px;
+    padding: 12px;
+    transform: rotate(1deg);
+  }
+}

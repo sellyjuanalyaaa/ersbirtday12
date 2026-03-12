@@ -1,0 +1,63 @@
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 100%);
+}
+
+.invitation-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Decorative elements */
+.vintage-border {
+  border: 3px solid var(--color-primary);
+  border-image: repeating-linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary) 10px,
+    transparent 10px,
+    transparent 20px
+  ) 10;
+}
+
+.section {
+  padding: 80px 20px;
+  position: relative;
+}
+
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--color-primary);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 15px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
